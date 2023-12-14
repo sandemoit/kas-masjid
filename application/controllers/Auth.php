@@ -11,9 +11,14 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('email')) {
-            redirect('user');
+        if ($this->session->email) {
+            if ($this->session->role_id == 1) {
+                redirect('admin'); // apabila sudah login masuk ke role admin/dashboard
+            } else {
+                redirect('user/dashboard'); // apabila sudah login masuk ke role users/dashboard
+            }
         }
+
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -41,6 +46,7 @@ class Auth extends CI_Controller
                 //cek password
                 if (password_verify($password, $user['password'])) {
                     $data = [
+                        'id' => $user['id'],
                         'email' => $user['email'],
                         'role_id' => $user['role_id']
                     ];

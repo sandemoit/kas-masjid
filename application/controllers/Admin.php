@@ -8,7 +8,6 @@ class Admin extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->model('Admin_model');
-        // $this->load->model('Grafik_model');
     }
 
     public function index()
@@ -17,14 +16,12 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['role'] = $this->db->get('user_role')->row_array();
 
-        $this->db->select_sum('nominal');
-        $data['total_donasi'] = $this->db->get('tbl_transaksi')->row_array();
+        $data['total_kas'] = $this->Admin_model->getTotalKas();
+        $data['total_donasi'] = $this->Admin_model->getTotalDonasi();
         $data['total_donatur'] = $this->db->query('select * from tbl_donatur')->num_rows();
 
         $data['kas_masuk'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'masuk'")->row_array();
         $data['kas_keluar'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'keluar'")->row_array();
-
-        // $data['data'] = $this->Grafik_model->get_data_stok();
 
         $this->load->view('template_auth/header', $data);
         $this->load->view('template_auth/sidebar', $data);
@@ -115,79 +112,5 @@ class Admin extends CI_Controller
         $this->Admin_model->delete($where, 'user_role');
         $this->session->set_flashdata('message', '<div class="alert alert-success text-white text-center" role="alert">Success delete role!</div>');
         redirect('admin/role');
-    }
-
-    public function donatur()
-    {
-        $data['title'] = 'Data Donatur';
-        $data['user'] =  $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-
-        $data['donatur'] = $this->db->get('tbl_donatur')->result_array();
-
-        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('template_auth/header', $data);
-            $this->load->view('template_auth/sidebar', $data);
-            $this->load->view('template_auth/topbar', $data);
-            $this->load->view('admin/donatur', $data);
-            $this->load->view('template_auth/footer');
-        } else {
-            $data = [
-                'nama' => $this->input->post('nama'),
-                'alamat' => $this->input->post('alamat'),
-            ];
-            $this->db->insert('tbl_donatur', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success text-center text-white" role="alert">
-            New Donatur added!
-          </div>');
-            redirect('admin/donatur');
-        }
-    }
-
-    public function updatedonatur()
-    {
-        $data['title'] = 'Data Donatur';
-        $data['user'] =  $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-
-        $data['donatur'] = $this->db->get('tbl_donatur')->result_array();
-
-        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-
-        $id = $this->input->post('id');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('template_auth/header', $data);
-            $this->load->view('template_auth/sidebar', $data);
-            $this->load->view('template_auth/topbar', $data);
-            $this->load->view('admin/donatur', $data);
-            $this->load->view('template_auth/footer');
-        } else {
-            $data = [
-                'nama' => $this->input->post('nama'),
-                'alamat' => $this->input->post('alamat'),
-            ];
-
-            $this->db->where('id', $id);
-            $this->db->update('tbl_donatur', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success text-center text-white" role="alert">
-           Update donatur ' . $this->input->post('nama') . ' berhasil!
-          </div>');
-            redirect('admin/donatur');
-        }
-    }
-
-    public function deleteDonatur()
-    {
-        $id = $this->input->get('id');
-        $this->db->delete('tbl_donatur', array('id' => $id));
-        $this->session->set_flashdata('message', '<div class="alert alert-success text-center text-white" role="alert">
-            Hapus Berhasil!
-          </div>');
-        redirect('admin/donatur');
     }
 }

@@ -7,6 +7,27 @@ class User extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->load->model('Admin_model');
+    }
+
+    public function dashboard()
+    {
+        $data['title'] = 'Dashboard';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['role'] = $this->db->get('user_role')->row_array();
+
+        $data['total_kas'] = $this->Admin_model->getTotalKas();
+        $data['total_donasi'] = $this->Admin_model->getTotalDonasi();
+
+        $id_user = $this->session->userdata("id");
+        $data['kas_masuk'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'masuk' AND id_user = ?", array($id_user))->row_array();
+        $data['kas_keluar'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'keluar' AND id_user = ?", array($id_user))->row_array();
+
+        $this->load->view('template_auth/header', $data);
+        $this->load->view('template_auth/sidebar', $data);
+        $this->load->view('template_auth/topbar', $data);
+        $this->load->view('user/index', $data);
+        $this->load->view('template_auth/footer');
     }
 
     public function index()
@@ -20,11 +41,19 @@ class User extends CI_Controller
             $this->load->view('template_auth/header', $data);
             $this->load->view('template_auth/sidebar', $data);
             $this->load->view('template_auth/topbar', $data);
-            $this->load->view('user/index', $data);
+            $this->load->view('user/profile', $data);
             $this->load->view('template_auth/footer');
         } else {
+            $id = $this->input->post('id');
             $name = $this->input->post('name');
+            $name_masjid = $this->input->post('name_masjid');
             $email = $this->input->post('email');
+
+            $save = [
+                'name' => $name,
+                'name_masjid' => $name_masjid,
+                'email' => $email,
+            ];
 
             //cek jika ada gambar di upload
             $upload_image = $_FILES['image']['name'];
@@ -47,10 +76,8 @@ class User extends CI_Controller
                 }
             }
 
-
-            $this->db->set('name', $name);
-            $this->db->where('email', $email);
-            $this->db->update('user');
+            $this->db->where('id', $id);
+            $this->db->update('user', $save);
             $this->session->set_flashdata('message', '<span class="text-success">Success edit your profile!</span>');
             redirect('user');
         }

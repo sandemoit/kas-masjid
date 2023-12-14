@@ -9,7 +9,7 @@
                         </div>
                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                             <div class="ms-auto my-auto">
-                                <a href="" class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#newrolemodal">+&nbsp; New Role</a>
+                                <a href="javascript:;" class="btn bg-gradient-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#newrolemodal">+&nbsp; New Role</a>
                             </div>
                         </div>
                     </div>

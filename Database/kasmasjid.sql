@@ -130,15 +130,15 @@ CREATE TABLE `tbl_transaksi` (
   `nama_transaksi` varchar(225) NOT NULL,
   `nominal` double(255,0) NOT NULL,
   `jenis` varchar(225) NOT NULL,
-  `id_anggota` varchar(225) NOT NULL,
-  `date_trx` date NOT NULL
+  `id_donatur` varchar(225) NOT NULL,
+  `tgl_transaksi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_transaksi`
 --
 
-INSERT INTO `tbl_transaksi` (`id`, `id_transaksi`, `nama_transaksi`, `nominal`, `jenis`, `id_anggota`, `date_trx`) VALUES
+INSERT INTO `tbl_transaksi` (`id`, `id_transaksi`, `nama_transaksi`, `nominal`, `jenis`, `id_donatur`, `tgl_transaksi`) VALUES
 (3, '28082022-6593', 'Donasi A/n Aqmarina', 5000000, 'kas masuk', '1', '2022-08-28'),
 (4, '28082022-2628', 'Donasi A/n Sandi', 10000000, 'kas masuk', '3', '2022-08-28'),
 (5, '29082022-3174', 'Donasi A/n Sandi Maulidika', 10000000, 'kas masuk', '3', '2022-08-29');

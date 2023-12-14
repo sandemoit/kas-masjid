@@ -8,12 +8,8 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Donasi</p>
                                 <h3 class="font-weight-bolder">
-                                    Rp <?= number_format($total_donasi['nominal']) ?>
+                                    Rp <?= isset($total_donasi) ? number_format($total_donasi, 0) : '0' ?>
                                 </h3>
-                                <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                    since yesterday
-                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -61,18 +57,13 @@
                             <tbody>
                                 <?php $i = 1; ?>
                                 <?php foreach ($donasi as $d) :
-                                    $date = date_create($d['date_trx']);
+                                    $date = date_create($d['tgl_transaksi']);
                                 ?>
                                     <tr>
                                         <th><?= $i ?></th>
-                                        <?php if ($user['role_id'] == 3) { ?>
-                                            <td><?= substr($d['nama_transaksi'], 0, 9) ?> ****************</td>
-                                        <?php } else { ?>
-                                            <td><?= $d['nama_transaksi'] ?></td>
-
-                                        <?php } ?>
+                                        <td><?= $d['nama_transaksi'] ?></td>
                                         <td class="text-center"><?= date_format($date, "d F Y") ?></td>
-                                        <td class="text-center"><?= number_format($d['nominal'], 0, ',', '.') ?></td>
+                                        <td class="text-center">Rp. <?= number_format($d['nominal'], 0, ',', '.') ?></td>
                                         <td class="text-center">
                                             <a href="" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#hapusmodal<?= $d['id_transaksi'] ?>">
                                                 <span class="icon text-white-50">

@@ -39,7 +39,7 @@
 
         <?php
         $id = $this->input->get('id');
-        $query = $this->db->query("select a.id as no,nama_transaksi,nominal,date_trx,nama,alamat from tbl_transaksi a left join tbl_donatur b on a.id_anggota = b.id
+        $query = $this->db->query("select a.id as no,nama_transaksi,nominal,tgl_transaksi,nama,alamat from tbl_transaksi a left join tbl_donatur b on a.id_donatur = b.id
 where a.id= $id")->result_array();
         foreach ($query as $q) :
             $date1 = date_create();

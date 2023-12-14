@@ -88,6 +88,7 @@ class Menu extends CI_Controller
         $title = $this->input->post('title');
         $menu_id = $this->input->post('menu_id');
         $icon = $this->input->post('icon');
+        $url = $this->input->post('url');
         $is_active = $this->input->post('is_active');
 
         $data = array(
@@ -95,6 +96,7 @@ class Menu extends CI_Controller
             'title' => $title,
             'menu_id' => $menu_id,
             'icon' => $icon,
+            'url' => $url,
             'is_active' => $is_active,
         );
 

@@ -34,10 +34,10 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                <!-- <p class="text-sm mx-auto">
+                                <p class="text-sm mx-auto">
                                     Don't have an account?
                                     <a href="<?php echo site_url('auth/registration') ?>" class="text-primary text-gradient font-weight-bold">Register Now!</a>
-                                </p> -->
+                                </p>
                                 <p class="text-sm mx-auto">
                                     <a href="<?php echo site_url('auth/forgotpassword') ?>" class="text-primary text-gradient font-weight-bold">Forgot Password?</a>
                                 </p>

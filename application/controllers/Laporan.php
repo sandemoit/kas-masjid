@@ -17,7 +17,7 @@ class Laporan extends CI_Controller
         $data['user'] =  $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data['jurnal'] = $this->db->query("SELECT a.id,a.id_transaksi,a.keterangan,a.tgl_transaksi,kredit,debit FROM jurnal a LEFT JOIN jurnal_detail b ON a.id = b.id_jurnal ORDER BY a.tgl_transaksi ASC")->result_array();
+        $data['jurnal'] = $this->db->query("SELECT a.id,a.id_transaksi,a.keterangan,a.tgl_transaksi,kredit,debit FROM jurnal a LEFT JOIN jurnal_detail b ON a.id = b.id_jurnal ORDER BY a.tgl_transaksi DESC")->result_array();
 
         $this->load->view('template_auth/header', $data);
         $this->load->view('template_auth/sidebar', $data);

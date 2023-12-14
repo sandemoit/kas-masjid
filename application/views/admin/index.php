@@ -7,13 +7,10 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Donasi</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Kas</p>
                                 <h4 class="font-weight-bolder">
-                                    Rp <?= number_format($total_donasi['nominal']) ?>
+                                    Rp <?= isset($total_kas) ? number_format($total_kas, 0) : '0' ?>
                                 </h4>
-                                <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -35,10 +32,6 @@
                                 <h4 class="font-weight-bolder">
                                     Rp <?= number_format($kas_masuk['nominal']) ?>
                                 </h4>
-                                <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                    since yesterday
-                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -60,10 +53,6 @@
                                 <h4 class="font-weight-bolder">
                                     Rp <?= number_format($kas_keluar['nominal']) ?>
                                 </h4>
-                                <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                    since last week
-                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -81,19 +70,15 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Donatur</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Donasi</p>
                                 <h4 class="font-weight-bolder">
-                                    <?= $total_donatur ?>
+                                    Rp <?= number_format($total_donasi, 0) ?>
                                 </h4>
-                                <p class="mb-0">
-                                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                    since last
-                                </p>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -103,8 +88,8 @@
     </div>
 
     <!-- Konten -->
-    <h2 class="mt-4 text-white">HALLO, <?php echo $user['name']; ?></h2>
-    <p>Login Sebagai : <?= $role['role']; ?></p>
+    <h2 class="mt-3 text-white">HALLO, <?php echo $user['name']; ?></h2>
+    <p class="text-white"><b>Login Sebagai : <?= $role['role']; ?></b></p>
     <!-- Akhir Konten -->
 
     <div class="row mt-4">

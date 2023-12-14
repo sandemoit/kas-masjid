@@ -8,6 +8,82 @@ class Transaksi extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->model('Admin_model');
+        $this->load->model('Donatur_model');
+    }
+
+    public function donatur()
+    {
+        $data['title'] = 'Data Donatur';
+        $data['user'] =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['donatur'] = $this->db->get_where('tbl_donatur', ['id_user' =>   $this->session->userdata("id")])->result_array();
+
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template_auth/header', $data);
+            $this->load->view('template_auth/sidebar', $data);
+            $this->load->view('template_auth/topbar', $data);
+            $this->load->view('admin/donatur', $data);
+            $this->load->view('template_auth/footer');
+        } else {
+            $data = [
+                'id_user' => $this->input->post('id_user'),
+                'nama' => $this->input->post('nama'),
+                'alamat' => $this->input->post('alamat'),
+            ];
+
+            $this->db->insert('tbl_donatur', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success text-center text-white" role="alert">
+            New Donatur added!
+          </div>');
+            redirect('transaksi/donatur');
+        }
+    }
+
+    public function updatedonatur()
+    {
+        $data['title'] = 'Data Donatur';
+        $data['user'] =  $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $data['donatur'] = $this->db->get('tbl_donatur')->result_array();
+
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+
+        $id = $this->input->post('id');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template_auth/header', $data);
+            $this->load->view('template_auth/sidebar', $data);
+            $this->load->view('template_auth/topbar', $data);
+            $this->load->view('admin/donatur', $data);
+            $this->load->view('template_auth/footer');
+        } else {
+            $data = [
+                'nama' => $this->input->post('nama'),
+                'alamat' => $this->input->post('alamat'),
+            ];
+
+            $this->db->where('id', $id);
+            $this->db->update('tbl_donatur', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success text-center text-white" role="alert">
+           Update donatur ' . $this->input->post('nama') . ' berhasil!
+          </div>');
+            redirect('transaksi/donatur');
+        }
+    }
+
+    public function deleteDonatur()
+    {
+        $id = $this->input->get('id');
+        $this->db->delete('tbl_donatur', array('id' => $id));
+        $this->session->set_flashdata('message', '<div class="alert alert-success text-center text-white" role="alert">
+            Hapus Berhasil!
+          </div>');
+        redirect('transaksi/donatur');
     }
 
     public function donasi()
@@ -18,12 +94,10 @@ class Transaksi extends CI_Controller
 
         $data['donatur'] = $this->db->get('tbl_donatur')->result_array();
 
-        $this->db->order_by("date_trx", "asc");
-        $data['donasi'] = $this->db->get('tbl_transaksi')->result_array();
+        $this->db->order_by("tgl_transaksi", "asc");
+        $data['donasi'] = $this->db->get_where('tbl_transaksi', ['id_user' =>  $this->session->userdata("id")])->result_array();
 
-        $this->db->select_sum('nominal');
-        $data['total_donasi'] = $this->db->get('tbl_transaksi')->row_array();
-
+        $data['total_donasi'] = $this->Admin_model->getTotalDonasi();
 
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
         $this->form_validation->set_rules('nominal', 'Nominal', 'required');
@@ -48,8 +122,8 @@ class Transaksi extends CI_Controller
                 'id_transaksi' => $idtransaksi,
                 'nama_transaksi' => 'Donasi A/n ' . $anggota['nama'],
                 'nominal' => preg_replace('/[^0-9]/', '', $this->input->post('nominal')),
-                'date_trx' =>  $this->input->post('tanggal'),
-                'id_anggota' =>  $this->input->post('nama'),
+                'tgl_transaksi' =>  $this->input->post('tanggal'),
+                'id_donatur' =>  $this->input->post('nama'),
                 'jenis' => 'kas masuk'
 
             ];
@@ -106,7 +180,8 @@ class Transaksi extends CI_Controller
         $data['user'] =  $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data['kaskeluar'] = $this->db->query("SELECT * FROM kas where tipe_kas = 'keluar'")->result_array();
+        $id_user =  $this->session->userdata("id");
+        $data['kaskeluar'] = $this->db->query("SELECT * FROM kas WHERE tipe_kas = 'keluar' AND id_user = ?", array($id_user))->result_array();
 
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
         $this->form_validation->set_rules('nominal', 'Nominal', 'required');
@@ -145,7 +220,8 @@ class Transaksi extends CI_Controller
         $data['user'] =  $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data['kasmasuk'] = $this->db->query("SELECT * FROM kas where tipe_kas = 'masuk'")->result_array();
+        $id_user =  $this->session->userdata("id");
+        $data['kasmasuk'] = $this->db->query("SELECT * FROM kas WHERE tipe_kas = 'masuk' AND id_user = ?", array($id_user))->result_array();
 
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
         $this->form_validation->set_rules('nominal', 'Nominal', 'required');

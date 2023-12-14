@@ -33,20 +33,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($donatur as $d) : ?>
+                                <?php $no = 1; ?>
+                                <?php foreach ($donatur as $key) : ?>
                                     <tr>
-                                        <td class="text-center"><?= $i; ?></td>
-                                        <td class="text-center"><?= $d['nama']; ?></td>
-                                        <td class="text-center"><?= $d['alamat']; ?></td>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td class="text-center"><?= $key['nama']; ?></td>
+                                        <td class="text-center"><?= $key['alamat']; ?></td>
                                         <td class="text-center">
-                                            <a href="" class="btn btn-warning btn-icon-split" data-bs-toggle="modal" data-bs-target="#editmodal<?= $d['id'] ?>">
+                                            <a href="" class="btn btn-warning btn-icon-split" data-bs-toggle="modal" data-bs-target="#editmodal<?= $key['id'] ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-pen"></i>
                                                 </span>
                                                 <span class="text">Edit</span>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#hapusmodal<?= $d['id'] ?>">
+                                            <a href="#" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#hapusmodal<?= $key['id'] ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
                                                 </span>
@@ -54,7 +54,6 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $i++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -75,8 +74,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="<?php echo base_url('admin/donatur') ?>" method="POST">
+                    <form action="<?php echo base_url('transaksi/donatur') ?>" method="POST">
                         <div class="modal-body">
+                            <input type="hidden" value="<?= $user['id'] ?>" class="form-control" name="id_user" placeholder="Nama Lengkap">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
                             </div>
@@ -104,7 +104,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?php echo base_url('admin/updatedonatur') ?>" method="POST">
+                        <form action="<?php echo base_url('transaksiupdatedonatur') ?>" method="POST">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <input type="hidden" name="id" id="id" value="<?= $d['id'] ?>">
@@ -140,7 +140,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn bg-gradient-danger" href="<?= base_url('admin/deletedonatur?id=') . $d['id']; ?>">Delete</a>
+                            <a class="btn bg-gradient-danger" href="<?= base_url('transaksideletedonatur?id=') . $d['id']; ?>">Delete</a>
                         </div>
                     </div>
                 </div>

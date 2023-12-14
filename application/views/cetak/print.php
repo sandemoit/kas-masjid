@@ -101,7 +101,7 @@
 </head>
 <?php
 $id = $this->input->get('id');
-$query = $this->db->query("select a.id as no,nama_transaksi,nominal,date_trx,nama,alamat from tbl_transaksi a left join tbl_donatur b on a.id_anggota = b.id
+$query = $this->db->query("select a.id as no,nama_transaksi,nominal,tgl_transaksi,nama,alamat from tbl_transaksi a left join tbl_donatur b on a.id_donatur = b.id
 where a.id= $id")->result_array();
 foreach ($query as $q) :
 ?>
@@ -119,7 +119,7 @@ foreach ($query as $q) :
 
                                 <td>
                                     Invoice #: <?= $q['no'] ?> <br>
-                                    Dibuat: <?= $q['date_trx'] ?>
+                                    Dibuat: <?= $q['tgl_transaksi'] ?>
                                 </td>
                             </tr>
                         </table>
