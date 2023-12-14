@@ -92,7 +92,7 @@ class Transaksi extends CI_Controller
         $data['user'] =  $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data['donatur'] = $this->db->get('tbl_donatur')->result_array();
+        $data['donatur'] = $this->db->get_where('tbl_donatur', ['id_user' =>  $this->session->userdata("id")])->result_array();
 
         $this->db->order_by("tgl_transaksi", "asc");
         $data['donasi'] = $this->db->get_where('tbl_transaksi', ['id_user' =>  $this->session->userdata("id")])->result_array();
@@ -119,6 +119,7 @@ class Transaksi extends CI_Controller
             $anggota =  $this->db->get_where('tbl_donatur', ['id' => $this->input->post('nama')])->row_array();
 
             $data = [
+                'id_user' => $this->input->post('id_user'),
                 'id_transaksi' => $idtransaksi,
                 'nama_transaksi' => 'Donasi A/n ' . $anggota['nama'],
                 'nominal' => preg_replace('/[^0-9]/', '', $this->input->post('nominal')),
@@ -129,6 +130,7 @@ class Transaksi extends CI_Controller
             ];
 
             $data_kas = [
+                'id_user' => $this->input->post('id_user'),
                 'id_transaksi' => $idtransaksi,
                 'tipe_kas' => 'masuk',
                 'tgl_transaksi' => $this->input->post('tanggal'),
@@ -199,6 +201,7 @@ class Transaksi extends CI_Controller
                 $idtransaksi = date("dmY") . '-' . rand(0000, 9999);
             }
             $data = [
+                'id_user' => $this->input->post('id_user'),
                 'id_transaksi' => $idtransaksi,
                 'tipe_kas' => 'keluar',
                 'keterangan' => $this->input->post('keterangan'),
@@ -239,6 +242,7 @@ class Transaksi extends CI_Controller
                 $idtransaksi = date("dmY") . '-' . rand(0000, 9999);
             }
             $data = [
+                'id_user' => $this->input->post('id_user'),
                 'id_transaksi' => $idtransaksi,
                 'tipe_kas' => 'masuk',
                 'keterangan' => $this->input->post('keterangan'),

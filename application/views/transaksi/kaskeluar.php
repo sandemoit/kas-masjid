@@ -17,6 +17,7 @@
 
                     <div class="table-responsive">
                         <form action="<?= base_url('transaksi/kaskeluar') ?>" method="post">
+                            <input type="hidden" name="id_user" value="<?= $user['id'] ?>">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Keterangan</label>
                                 <input class="form-control mb-2" type="text" id="keterangan" name="keterangan" placeholder="ex: pembayaran .....">

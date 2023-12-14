@@ -107,6 +107,7 @@
                         </button>
                     </div>
                     <form action="<?php echo base_url('transaksi/donasi') ?>" method="POST">
+                        <input type="hidden" name="id_user" value="<?= $user['id'] ?>">
                         <div class="modal-body">
                             <div class="form-group">
                                 <select name="nama" id="nama" class="form-control">
