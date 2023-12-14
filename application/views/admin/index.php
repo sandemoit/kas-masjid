@@ -30,7 +30,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Kas Masuk</p>
                                 <h4 class="font-weight-bolder">
-                                    Rp <?= number_format($kas_masuk['nominal']) ?>
+                                    Rp <?= isset($kas_masuk) ? number_format($kas_masuk, 0) : '0' ?>
                                 </h4>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Kas Keluar</p>
                                 <h4 class="font-weight-bolder">
-                                    Rp <?= number_format($kas_keluar['nominal']) ?>
+                                    Rp <?= isset($kas_keluar) ? number_format($kas_keluar, 0) : '0' ?>
                                 </h4>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Donasi</p>
                                 <h4 class="font-weight-bolder">
-                                    Rp <?= number_format($total_donasi, 0) ?>
+                                    Rp <?= isset($total_donasi) ? number_format($total_donasi, 0) : '0' ?>
                                 </h4>
                             </div>
                         </div>

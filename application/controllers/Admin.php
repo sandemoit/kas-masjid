@@ -16,12 +16,14 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['role'] = $this->db->get('user_role')->row_array();
 
+        $id_user = $this->session->id;
+
         $data['total_kas'] = $this->Admin_model->getTotalKas();
         $data['total_donasi'] = $this->Admin_model->getTotalDonasi();
         $data['total_donatur'] = $this->db->query('select * from tbl_donatur')->num_rows();
 
-        $data['kas_masuk'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'masuk'")->row_array();
-        $data['kas_keluar'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'keluar'")->row_array();
+        $data['kas_masuk'] = $this->Admin_model->getKasMasuk();
+        $data['kas_keluar'] = $this->Admin_model->getKasKeluar();
 
         $this->load->view('template_auth/header', $data);
         $this->load->view('template_auth/sidebar', $data);

@@ -13,6 +13,26 @@ class Admin_model extends CI_Model
         $this->db->delete($table, $where);
     }
 
+    public function getKasMasuk()
+    {
+        // Menghitung total_masuk dari tabel 'kas' dengan tipe 'masuk'
+        $id_user = $this->session->id;
+        $query_masuk = $this->db->query("SELECT SUM(nominal) as kas_masuk FROM kas WHERE tipe_kas = 'masuk' AND id_user = ?", array($id_user))->row_array();
+        $kas_masuk = $query_masuk['kas_masuk'];
+
+        return $kas_masuk;
+    }
+
+    public function getKasKeluar()
+    {
+        // Menghitung total_keluar dari tabel 'kas' dengan tipe 'keluar'
+        $id_user = $this->session->id;
+        $query_keluar = $this->db->query("SELECT SUM(nominal) as kas_keluar FROM kas WHERE tipe_kas = 'keluar' AND id_user = ?", array($id_user))->row_array();
+        $kas_keluar = $query_keluar['kas_keluar'];
+
+        return $kas_keluar;
+    }
+
     public function getTotalKas()
     {
         // Menghitung total_masuk dari tabel 'kas' dengan tipe 'masuk'
@@ -32,12 +52,10 @@ class Admin_model extends CI_Model
 
     public function getTotalDonasi()
     {
-        $id_user = $this->session->userdata("id");
+        $id_user = $this->session->id;
         $quer = $this->db->query("SELECT SUM(nominal) as total_transaksi FROM tbl_transaksi WHERE id_user = ?", array($id_user))->row_array();
         $total_transaksi = $quer['total_transaksi'];
 
-        $total_kas = $total_transaksi;
-
-        return $total_kas;
+        return $total_transaksi;
     }
 }

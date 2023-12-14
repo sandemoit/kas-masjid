@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5 text-center mx-auto">
-                    <h1 class="text-white mb-2 mt-5">Halaman Registration</h1>
+                    <h1 class="text-white mb-2 mt-5">Halaman Pendaftaran</h1>
                     <p class="text-lead text-white">Silahkan Membuat akun secara gratis tidak dipungut biaya.</p>
                 </div>
             </div>
@@ -15,12 +15,12 @@
             <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                 <div class="card z-index-0">
                     <div class="card-header text-center pt-4">
-                        <h5>Register</h5>
+                        <h5>Daftar</h5>
                     </div>
                     <div class="card-body">
                         <form role="form" action="<?php echo site_url('auth/registration') ?>" method="POST">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Nama Lengkap" id="name" name="name" value="<?= set_value('name') ?>">
+                                <input type="text" class="form-control" placeholder="Nama Pengguna" id="name" name="name" value="<?= set_value('name') ?>">
                                 <?= form_error('name', '<small class="text-danger" pl-3>', '</small>'); ?>
                             </div>
                             <div class="mb-3">
@@ -35,9 +35,9 @@
                                 <input type="password" class="form-control" placeholder="Konfirmasi Password" id="password2" name="password2">
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
                             </div>
-                            <p class="text-sm mt-3 mb-0">Already have an account? <a href="<?php echo site_url('auth/index') ?>" class="text-dark font-weight-bolder">Sign in</a></p>
+                            <p class="text-sm mt-3 mb-0">Sudah punya akun masjid? <a href="<?php echo site_url('auth/index') ?>" class="text-dark font-weight-bolder">Login!</a></p>
                         </form>
                     </div>
                 </div>
@@ -51,9 +51,7 @@
         <div class="row">
             <div class="col-8 mx-auto text-center mt-1">
                 <p class="mb-0 text-secondary">
-                    Copyright © <script>
-                        document.write(new Date().getFullYear())
-                    </script> Soft by Creative Tim.
+                    Copyright © <?= date('Y') ?> Build by Sandemo Indo Teknologi.
                 </p>
             </div>
         </div>

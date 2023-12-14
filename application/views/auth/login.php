@@ -10,8 +10,8 @@
                     <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-start">
-                                <h4 class="font-weight-bolder">Halaman Login</h4>
-                                <p class="mb-0">Masukkan email dan password Anda untuk login</p>
+                                <h4 class="font-weight-bolder">Halaman Login Masjid</h4>
+                                <p class="mb-0">Masukkan email dan password untuk login</p>
                             </div>
                             <div class="card-body">
                                 <?php echo $this->session->flashdata('message') ?>
@@ -35,11 +35,11 @@
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                 <p class="text-sm mx-auto">
-                                    Don't have an account?
-                                    <a href="<?php echo site_url('auth/registration') ?>" class="text-primary text-gradient font-weight-bold">Register Now!</a>
+                                    Belum punya akun masjid?
+                                    <a href="<?php echo site_url('auth/registration') ?>" class="text-primary text-gradient font-weight-bold">Daftar Sekarang!</a>
                                 </p>
                                 <p class="text-sm mx-auto">
-                                    <a href="<?php echo site_url('auth/forgotpassword') ?>" class="text-primary text-gradient font-weight-bold">Forgot Password?</a>
+                                    <a href="<?php echo site_url('auth/forgotpassword') ?>" class="text-primary text-gradient font-weight-bold">Lupa Password?</a>
                                 </p>
                             </div>
                         </div>

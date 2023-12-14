@@ -8,18 +8,23 @@ class User extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->model('Admin_model');
+        $this->load->model('User_model');
     }
 
     public function dashboard()
     {
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['role'] = $this->db->get('user_role')->row_array();
+        $role_id = $this->session->role_id;
+        $id_user = $this->session->id;
+
+        $data['role'] = $this->User_model->getRole();
+        // var_dump($data['role']);
+        // die;
 
         $data['total_kas'] = $this->Admin_model->getTotalKas();
         $data['total_donasi'] = $this->Admin_model->getTotalDonasi();
 
-        $id_user = $this->session->userdata("id");
         $data['kas_masuk'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'masuk' AND id_user = ?", array($id_user))->row_array();
         $data['kas_keluar'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'keluar' AND id_user = ?", array($id_user))->row_array();
 

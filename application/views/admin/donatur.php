@@ -104,7 +104,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?php echo base_url('transaksiupdatedonatur') ?>" method="POST">
+                        <form action="<?php echo base_url('transaksi/updatedonatur') ?>" method="POST">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <input type="hidden" name="id" id="id" value="<?= $d['id'] ?>">

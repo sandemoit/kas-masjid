@@ -15,7 +15,7 @@ class Auth extends CI_Controller
             if ($this->session->role_id == 1) {
                 redirect('admin'); // apabila sudah login masuk ke role admin/dashboard
             } else {
-                redirect('user/dashboard'); // apabila sudah login masuk ke role users/dashboard
+                redirect('user'); // apabila sudah login masuk ke role users/dashboard
             }
         }
 
