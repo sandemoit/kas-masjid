@@ -87,3 +87,4 @@ defined('EMAIL_ALAMAT')      || define('EMAIL_ALAMAT', 'info@sandemoindoteknolog
 defined('EMAIL_PASSWORD')      || define('EMAIL_PASSWORD', 'info@sandemoindoteknologi.co.id');
 defined('EMAIL_NAMA')      || define('EMAIL_NAMA', 'Keuangan Masjid');
 defined('EMAIL_HOST')      || define('EMAIL_HOST', 'mail.sandemoindoteknologi.co.id');
+defined('EMAIL_PORT')      || define('EMAIL_PORT', 465);
