@@ -14,8 +14,7 @@ class Laporan extends CI_Controller
     public function index()
     {
         $data['title'] = 'Laporan Kas';
-        $data['user'] =  $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
+        $data['user'] =  $this->db->get_where('user', ['email' => $this->session->email])->row_array();
 
         $id_user = $this->session->id;
         $data['jurnal'] = $this->db->query("
