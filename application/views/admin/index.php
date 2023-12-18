@@ -89,7 +89,11 @@
 
     <!-- Konten -->
     <h2 class="mt-3 text-white">HALLO, <?php echo $user['name']; ?></h2>
-    <p class="text-white"><b>Login Sebagai : <?= $role['role']; ?></b></p>
+    <?php if ($role['role'] == 1) : ?>
+        <p class="text-white"><b>Login Sebagai : Admin</b></p>
+    <?php else : ?>
+        <p class="text-white"><b>Login Sebagai : Keuangan</b></p>
+    <?php endif ?>
     <!-- Akhir Konten -->
 
     <div class="row mt-4">

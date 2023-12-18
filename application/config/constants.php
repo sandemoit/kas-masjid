@@ -83,7 +83,7 @@ defined('EXIT_USER_INPUT')     or define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       or define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      or define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-defined('EMAIL_ALAMAT')      || define('EMAIL_ALAMAT', 'admin@sandemo.site');    // highest automatically-assigned error code
-defined('EMAIL_NAMA')      || define('EMAIL_NAMA', 'Service SANDEMO ID');    // highest automatically-assigned error code
-defined('EMAIL_PASSWORD')      || define('EMAIL_PASSWORD', 'admin@sandemo.site');    // highest automatically-assigned error code
-defined('EMAIL_HOST')      || define('EMAIL_HOST', 'admin@sandemo.site');    // highest automatically-assigned error code
+defined('EMAIL_ALAMAT')      || define('EMAIL_ALAMAT', 'info@sandemoindoteknologi.co.id');
+defined('EMAIL_PASSWORD')      || define('EMAIL_PASSWORD', 'info@sandemoindoteknologi.co.id');
+defined('EMAIL_NAMA')      || define('EMAIL_NAMA', 'Keuangan Masjid');
+defined('EMAIL_HOST')      || define('EMAIL_HOST', 'mail.sandemoindoteknologi.co.id');
