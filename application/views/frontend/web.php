@@ -64,7 +64,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
                     <li><a class="nav-link scrollto" href="#data-masjid">Data Masjid</a></li>
                     <li><a class="nav-link scrollto" href="#kegiatan">Kegiatan</a></li>
                     <li><a class="nav-link scrollto" href="#jadwal">Jadwal Sholat</a></li>
@@ -230,8 +230,8 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Kegiatan</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Kegiatan Islami</h2>
+                    <p>Ikuti serangkaian kegiatan Islami kami yang penuh makna, memperingati berbagai tanggal bersejarah dalam kalender Islam. Setiap acara dirancang untuk memperkuat ikatan komunitas dan mendalamkan pemahaman terhadap nilai-nilai Islam. Sambut kebersamaan, ilmu, dan keberkahan dalam setiap momen spesial tanggal Islam bersama kami.</p>
                 </div>
 
                 <div class="row">
