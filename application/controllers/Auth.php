@@ -158,7 +158,7 @@ class Auth extends CI_Controller
             $mail->Subject = 'Account Verification';
 
             // $mail->Body = $this->load->view('templates/auth_email/verify', ['token' => $token], TRUE);
-            $mail->Body = 'Click this link to verify you account  : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>';
+            $mail->Body = 'Click this link to verify you account  : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Verifikasi Akun</a>';
         } else if ($type == 'forgot') {
             $mail->isHTML(true);
             $mail->Subject = 'Reset Password';
@@ -218,7 +218,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('message', '<div class="alert alert-success text-white text-center" role="alert">You have been logout</div>');
-        redirect('auth');
+        redirect('/');
     }
 
     public function blocked()

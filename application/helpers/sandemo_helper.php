@@ -36,3 +36,15 @@ function check_access($role_id, $menu_id)
         return "checked='checked'";
     }
 }
+
+if (!function_exists('get_setting')) {
+    function get_setting($column_name)
+    {
+        $CI = &get_instance();
+        $CI->load->library('global_library');
+
+        $managements = $CI->global_library->get_settings();
+
+        return isset($managements[$column_name]) ? $managements[$column_name] : '';
+    }
+}
