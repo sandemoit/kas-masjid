@@ -67,6 +67,7 @@
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
                     <li><a class="nav-link scrollto" href="#data-masjid">Data Masjid</a></li>
                     <li><a class="nav-link scrollto" href="#kegiatan">Kegiatan</a></li>
+                    <li><a class="nav-link scrollto" href="#jadwal">Jadwal Sholat</a></li>
                     <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
@@ -141,23 +142,23 @@
                 <div class="row no-gutters">
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box">
-                            <div class="icon"><i class="bi bi-laptop"></i></div>
-                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                            <div class="icon"><i class="bi bi-infinity"></i></div>
+                            <h4 class="title"><a href="">Pantau Keuangan Tanpa Batas</a></h4>
+                            <p class="description">Aplikasi ini memungkinkan pengurus masjid untuk dengan mudah memantau dan mengelola keuangan secara real-time dari mana saja dan kapan saja melalui website yang responsif.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box">
-                            <div class="icon"><i class="bi bi-briefcase"></i></div>
-                            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                            <div class="icon"><i class="bi bi-shield-check"></i></div>
+                            <h4 class="title"><a href="">Sederhana, Tapi Kuat</a></h4>
+                            <p class="description">Dengan antarmuka yang sederhana namun kuat, aplikasi keuangan masjid ini didesain agar mudah digunakan oleh semua anggota pengurus, bahkan yang tidak memiliki pengalaman teknis khusus.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="icon-box">
-                            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trade stravi</p>
+                            <div class="icon"><i class="bi bi-person-check"></i></div>
+                            <h4 class="title"><a href="">Laporan Cepat, Keputusan Tepat</a></h4>
+                            <p class="description">Akses laporan keuangan yang lengkap dan cepat membantu pengurus masjid membuat keputusan yang tepat dalam pengelolaan dana, menjadikan aplikasi ini sebagai alat yang tak tergantikan.</p>
                         </div>
                     </div>
                 </div>
@@ -171,28 +172,23 @@
 
                 <div class="section-title">
                     <h2>About Us</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p><?php echo get_setting('about') ?></p>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2">
-                        <img src="<?= base_url('assets/frontend/') ?>img/about.jpg" class="img-fluid" alt="">
+                        <img src="<?= base_url('assets/frontend/') ?>img/app.webp" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
-                        </p>
-                        <ul>
-                            <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                            <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                        </ul>
+                        <h3>Tentang Aplikasi Keuangan Masjid/Musala: "Sewajarnya Unggul"</h3>
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum
+                            Selamat datang di Aplikasi Keuangan Masjid, solusi canggih yang diciptakan untuk memudahkan pengurus masjid dalam mengelola keuangan dengan segala kemudahan di ujung jari. Dengan penuh dedikasi, kami menghadirkan berbagai keunggulan yang membedakan aplikasi ini dari yang lain.
+                        </p>
+                        <p class="fst-italic">
+                            Aplikasi ini diciptakan dengan fokus pada kesederhanaan. Meskipun begitu, kekuatannya tidak boleh dianggap remeh. Antarmuka yang intuitif memastikan penggunaan yang mudah, memungkinkan siapa pun, tanpa terkecuali, untuk mengelola keuangan masjid tanpa kerumitan.
+                        </p>
+                        <p class="fst-italic">
+                            Menyadari kebutuhan akan fleksibilitas, aplikasi ini dapat diakses dari berbagai perangkat. Dengan begitu, pengurus masjid dapat mengelola keuangan dengan mudah di mana saja dan kapan saja, tanpa kekhawatiran akan kendala teknis.
                         </p>
                     </div>
                 </div>
@@ -212,9 +208,9 @@
 
                     <?php foreach ($data as $data) : ?>
                         <div class="col-lg-4 col-md-6 content-item">
-                            <span>01</span>
+                            <img src="" alt="Logo Masjid <?= $data['name_masjid'] ?>">
                             <h4>Masjid <?= $data['name_masjid'] ?></h4>
-                            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+                            <p><?= $data['alamat'] ?></p>
                         </div>
                     <?php endforeach ?>
 
@@ -382,7 +378,20 @@
             </div>
         </section><!-- End Portfolio Section -->
 
-        <!-- ======= Team Section ======= -->
+        <!-- ======= Jadwal Sholat ======= -->
+        <section id="jadwal" class="portfolio">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Jadwal Sholat</h2>
+                </div>
+
+                <div class="row">
+                    <iframe id="iframe" title="prayerWidget" class="widget-m-top" style=" height: 358px; border: 1px solid #ddd;" scrolling="no" src="https://www.islamicfinder.org/prayer-widget/1642911/shafi/11/0/20.0/18.0"> </iframe>
+                </div>
+
+            </div>
+        </section>
 
         <!-- ======= Contact Section ======= -->
 
