@@ -26,7 +26,6 @@
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url('assets/frontend/') ?>css/style.css" rel="stylesheet">
-    <link href="<?= base_url('assets/frontend/') ?>css/custom.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: Green
@@ -140,18 +139,25 @@
             <div class="container">
 
                 <div class="row no-gutters">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-6">
                         <div class="icon-box">
-                            <div class="icon"><i class="bi bi-stopwatch"></i></div>
-                            <h4 class="title"><a href="">Jadwal Shalat Selanjutnya</a></h4>
-                            <h4 class="title"><a href="">Jadwal Shalat Selanjutnya</a></h4>
+                            <div class="icon"><i class="bi bi-laptop"></i></div>
+                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-6">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-briefcase"></i></div>
                             <h4 class="title"><a href="">Dolor Sitema</a></h4>
                             <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+                            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trade stravi</p>
                         </div>
                     </div>
                 </div>
