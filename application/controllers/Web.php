@@ -5,6 +5,7 @@ class Web extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('frontend/web');
+        $data['data'] = $this->db->where('role_id !=', 1)->get('user')->result_array();
+        $this->load->view('frontend/web', $data);
     }
 }
