@@ -107,7 +107,7 @@
                     <div class="carousel-container">
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown">Assalamualaikum</h2>
-                            <p class="animate__animated animate__fadeInUp"><?= ?></p>
+                            <p class="animate__animated animate__fadeInUp"><?= get_setting('about') ?></p>
                             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                         </div>
                     </div>
