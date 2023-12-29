@@ -110,11 +110,14 @@
                         <form action="<?php echo base_url('transaksi/updatekegiatan') ?>" method="POST">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <input type="hidden" name="id" id="id" value="<?= $d['id'] ?>">
-                                    <input type="text" class="form-control" id="nama" name="nama" value="<?= $d['nama'] ?>" placeholder="Nama Lengkap">
+                                    <input type="hidden" name="id_kegiatan" id="id" value="<?= $d['id_kegiatan'] ?>">
+                                    <input type="text" class="form-control" id="name_kegiatan" name="name_kegiatan" value="<?= $d['name_kegiatan'] ?>" placeholder="Nama kegiatan">
                                 </div>
                                 <div class="form-group">
-                                    <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat"><?= $d['alamat'] ?></textarea>
+                                    <input type="date" class="form-control" id="date_kegiatan" name="date_kegiatan" value="<?= $d['date_kegiatan'] ?>">
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" id="image_kegiatan" name="image_kegiatan" value="<?= $d['image_kegiatan'] ?>">
                                 </div>
                             </div>
                             <div class="modal-footer">

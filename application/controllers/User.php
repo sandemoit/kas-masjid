@@ -135,6 +135,8 @@ class User extends CI_Controller
         $data['title'] = 'Kegiatan';
 
         $this->form_validation->set_rules('name_kegiatan', 'Nama kegiatan', 'required|trim');
+        $this->form_validation->set_rules('date_kegiatan', 'Tanggal kegiatan', 'required|trim');
+        $this->form_validation->set_rules('image_kegiatan', 'Image kegiatan', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template_auth/header', $data);
