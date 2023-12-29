@@ -144,7 +144,7 @@ class User extends CI_Controller
             $this->load->view('template_auth/footer');
         } else {
             $config['upload_path'] = 'assets/frontend/img/kegiatan';
-            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['allowed_types'] = 'jpg|png|jpeg|webp';
             $config['max_size'] = 2014;
             $config['encrypt_name'] = TRUE;
 
@@ -154,8 +154,9 @@ class User extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->set('image_kegiatan', $new_image);
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger text-white text-center" role="alert">Gagal mengupdate data user!</div>');
-                redirect('profile');
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('message', '<div class="alert alert-danger text-white text-center"' . $error . '</div>');
+                redirect('user/kegiatan');
             }
 
             $save = [

@@ -7,7 +7,7 @@
                     <?php foreach ($kegiatan as $key) : ?>
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="card__kegiatan">
-                                <a href="<?= site_url('assets/frontend/img/event/') . $key['image_kegiatan'] ?>"><img src="<?= site_url('assets/frontend/img/event/') . $key['image_kegiatan'] ?>" alt="Event"></a>
+                                <a href="<?= site_url('assets/frontend/img/kegiatan/') . $key['image_kegiatan'] ?>"><img src="<?= site_url('assets/frontend/img/kegiatan/') . $key['image_kegiatan'] ?>" alt="Event"></a>
                                 <div class="card__detail">
                                     <h5><?= $key['name_kegiatan'] ?></h5>
                                     <p><?= date('d/m/Y', strtotime($key['date_kegiatan'])) ?></p>
