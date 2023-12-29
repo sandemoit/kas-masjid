@@ -26,14 +26,7 @@
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url('assets/frontend/') ?>css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Green
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="<?= base_url('assets/frontend/') ?>css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -63,10 +56,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-                    <li><a class="nav-link scrollto" href="#data-masjid">Data Masjid</a></li>
-                    <li><a class="nav-link scrollto" href="#jadwal">Jadwal Sholat</a></li>
+                    <li><a class="nav-link scrollto active" href="<?= site_url('#hero') ?>">Home</a></li>
+                    <li><a class="nav-link scrollto" href="<?= site_url('#about') ?>">Tentang Kami</a></li>
+                    <li><a class="nav-link scrollto" href="<?= site_url('#data-masjid') ?>">Data Masjid</a></li>
+                    <li><a class="nav-link scrollto" href="<?= site_url('#jadwal') ?>">Jadwal Sholat</a></li>
                     <li><a class="getstarted scrollto" href="<?= site_url('login') ?>">Login/Daftar</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

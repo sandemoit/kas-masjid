@@ -2,26 +2,21 @@
     <div class="container">
         <div class="row gy-4">
 
-            <!-- <div class="col-lg-8">
-                <div class="portfolio-details-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-
-                        <div class="swiper-slide">
-                            <img src="assets/img/portfolio/portfolio-1.jpg" alt="">
+            <div class="col-lg-8">
+                <div class="row">
+                    <?php foreach ($kegiatan as $key) : ?>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="card__kegiatan">
+                                <a href="<?= site_url('assets/frontend/img/event/') . $key['image_kegiatan'] ?>"><img src="<?= site_url('assets/frontend/img/event/') . $key['image_kegiatan'] ?>" alt="Event"></a>
+                                <div class="card__detail">
+                                    <h5><?= $key['name_kegiatan'] ?></h5>
+                                    <p><?= date('d/m/Y', strtotime($key['date_kegiatan'])) ?></p>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="swiper-slide">
-                            <img src="assets/img/portfolio/portfolio-2.jpg" alt="">
-                        </div>
-
-                        <div class="swiper-slide">
-                            <img src="assets/img/portfolio/portfolio-3.jpg" alt="">
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
+                    <?php endforeach ?>
                 </div>
-            </div> -->
+            </div>
 
             <div class="col-lg-4">
                 <div class="portfolio-info">

@@ -124,11 +124,9 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('user', $data);
+
             $id_user = $this->db->insert_id();
-            $save = [
-                'id_user' => $id_user
-            ];
-            $this->db->insert('detail_masjid', $save);
+            $this->db->insert('detail_masjid', array('id_user' => $id_user));
 
             $this->db->insert('user_token', $user_token);
 

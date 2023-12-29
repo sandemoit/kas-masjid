@@ -128,10 +128,60 @@ class User extends CI_Controller
         }
     }
 
+    public function kegiatan()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kegiatan'] = $this->db->get_where('kegiatan', ['id_user' =>   $this->session->id])->result_array();
+        $data['title'] = 'Kegiatan';
+
+        $this->form_validation->set_rules('name_kegiatan', 'Nama kegiatan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template_auth/header', $data);
+            $this->load->view('template_auth/sidebar');
+            $this->load->view('template_auth/topbar');
+            $this->load->view('user/kegiatan');
+            $this->load->view('template_auth/footer');
+        } else {
+            $config['upload_path'] = 'assets/frontend/img/kegiatan';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = 2014;
+            $config['encrypt_name'] = TRUE;
+
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('image_kegiatan')) {
+                $new_image = $this->upload->data('file_name');
+                $this->db->set('image_kegiatan', $new_image);
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger text-white text-center" role="alert">Gagal mengupdate data user!</div>');
+                redirect('profile');
+            }
+
+            $save = [
+                'id_user' => $this->input->post('id_user'),
+                'name_kegiatan' => $this->input->post('name_kegiatan'),
+                'date_kegiatan' => $this->input->post('date_kegiatan'),
+            ];
+
+            $this->db->insert('kegiatan', $save);
+            $this->session->set_flashdata('message', '<div class="alert alert-success text-white text-center" role="alert">Success tambah kegiatan masjid!</div>');
+            redirect('user/kegiatan');
+        }
+    }
+
+    public function deletekegitan($id)
+    {
+        $where = array('id_kegiatan' => $id);
+        $this->User_model->delete($where, 'kegiatan');
+        $this->session->set_flashdata('message', '<div class="alert alert-success text-white text-center" role="alert text-center">Success delete kegiatan!</div>');
+        redirect('user/kegiatan');
+    }
+
     public function management()
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['site'] = $this->db->get('detail_masjid')->row_array();
+        $data['site'] = $this->db->get_where('detail_masjid', ['id_user' =>   $this->session->id])->row_array();
         $data['title'] = 'Site Management';
 
         $this->form_validation->set_rules('name_resmi', 'Nama Masjid Resmi', 'required|trim');
@@ -151,6 +201,9 @@ class User extends CI_Controller
                 'luas_bangunan' => $this->input->post('luas_bangunan'),
                 'luas_keseluruhan' => $this->input->post('luas_keseluruhan'),
                 'daya_tampung' => $this->input->post('daya_tampung'),
+                'facebook' => $this->input->post('facebook'),
+                'twitter' => $this->input->post('twitter'),
+                'instagram' => $this->input->post('instagram'),
             ];
 
             $this->db->where('id_detail', $id);

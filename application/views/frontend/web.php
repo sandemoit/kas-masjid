@@ -66,7 +66,6 @@
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
                     <li><a class="nav-link scrollto" href="#data-masjid">Data Masjid</a></li>
-                    <li><a class="nav-link scrollto" href="#kegiatan">Kegiatan</a></li>
                     <li><a class="nav-link scrollto" href="#jadwal">Jadwal Sholat</a></li>
                     <li><a class="getstarted scrollto" href="<?= site_url('login') ?>">Login/Daftar</a></li>
                 </ul>
@@ -203,23 +202,25 @@
                 </div>
 
                 <div class="row">
-                    <?php foreach ($data as $data) : ?>
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                            <div class="member">
-                                <a href="<?= site_url('masjid/') . $data['id'] . '/' . str_replace(' ', '', $data['name_masjid']) ?>"><img src="<?= base_url('assets/img/profile/') . $data['image'] ?>"></a>
-                                <h4><a href="<?= site_url('masjid/') . $data['id'] . '/' . str_replace(' ', '', $data['name_masjid']) ?>">Masjid <?= $data['name_masjid'] ?></a></h4>
-                                <span><?= date('d/m/Y', strtotime($data['date_resmi'])) ?></span>
-                                <p>
-                                    <?= $data['lokasi'] ?>
-                                </p>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <?php foreach ($masjid as $data) : ?>
+                        <?php if ($data['name_resmi'] !== null && $data['date_resmi'] !== null && $data['lokasi'] !== null) : ?>
+                            <?php $url = url_title($data['name_resmi'], '-', TRUE); ?>
+                            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                                <div class="member">
+                                    <a href="<?= site_url('masjid/') . $data['id'] . '/' . $url ?>"><img src="<?= base_url('assets/img/profile/') . ($data['image'] ? $data['image'] : 'default.jpg') ?>"></a>
+                                    <h4><a href="<?= site_url('masjid/') . $data['id'] . '/' . $url ?>">Masjid <?= $data['name_resmi'] ?></a></h4>
+                                    <span><?= $data['date_resmi'] ? date('d/m/Y', strtotime($data['date_resmi'])) : '-' ?></span>
+                                    <p>
+                                        <?= $data['lokasi'] ? $data['lokasi'] : '-' ?>
+                                    </p>
+                                    <div class="social">
+                                        <a href="https://<?= $data['twitter'] ? $data['twitter'] : '#' ?>"><i class="bi bi-twitter"></i></a>
+                                        <a href="https://<?= $data['facebook'] ? $data['facebook'] : '#' ?>"><i class="bi bi-facebook"></i></a>
+                                        <a href="https://<?= $data['instagram'] ? $data['instagram'] : '#' ?>"><i class="bi bi-instagram"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     <?php endforeach ?>
                 </div>
 

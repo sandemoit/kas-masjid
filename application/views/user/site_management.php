@@ -1,10 +1,9 @@
 <div class="main-content position-relative max-height-vh-100 h-100">
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-md-8  mb-lg-0 mb-5">
-                <div class="card">
-
-                    <form action="<?= site_url('user/management') ?>" method="post">
+            <div class="col-md-6  mb-lg-6 mb-5">
+                <form action="<?= site_url('user/management') ?>" method="post">
+                    <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Edit Site Management</p>
@@ -13,7 +12,6 @@
                         </div>
                         <div class="card-body">
                             <?= $this->session->flashdata('message'); ?>
-                            <p class="text-uppercase text-sm">Site Information</p>
                             <input class="form-control" name="id_detail" type="hidden" value="<?= $site['id_detail']; ?>">
                             <div class="row">
                                 <div class="col-md-12">
@@ -59,10 +57,47 @@
                                     </div>
                                 </div>
                             </div>
-                    </form>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-6  mb-lg-6 mb-5">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="d-flex align-items-center">
+                            <p class="mb-0">Edit Sosial Media</p>
+                            <button type="submit" class="btn btn-primary btn-sm ms-auto">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <?= $this->session->flashdata('message'); ?>
+                        <input class="form-control" name="id_detail" type="hidden" value="<?= $site['id_detail']; ?>">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">Facebook</label>
+                                    <input class="form-control" name="facebook" id="facebook" type="text" value="<?= $site['facebook']; ?>">
+                                    <?= form_error('facebook', '<small class="text-danger" pl-3>', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">Twitter</label>
+                                    <input class="form-control" name="twitter" id="twitter" type="text" value="<?= $site['twitter']; ?>">
+                                    <?= form_error('twitter', '<small class="text-danger" pl-3>', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">Instagram</label>
+                                    <input class="form-control" name="instagram" id="instagram" type="text" value="<?= $site['instagram']; ?>">
+                                    <?= form_error('instagram', '<small class="text-danger" pl-3>', '</small>'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 </div>

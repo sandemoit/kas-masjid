@@ -11,7 +11,7 @@ class Web extends CI_Controller
 
     public function index()
     {
-        $data['data'] = $this->Web_model->getMasjid();
+        $data['masjid'] = $this->Web_model->getMasjid();
         $this->load->view('frontend/web', $data);
     }
 
@@ -19,10 +19,11 @@ class Web extends CI_Controller
     {
         $id = $this->uri->segment(2);
         $data['masjid'] = $this->Web_model->getDetail($id);
+        $data['kegiatan'] = $this->Web_model->getKegiatan($id);
+
         if (!$data['masjid']) {
             show_404();
         }
-        // $data['title'] = $data['masjid']['name_resmi'];
 
         $this->load->view('frontend/layout/header', $data);
         $this->load->view('frontend/masjid_detail');

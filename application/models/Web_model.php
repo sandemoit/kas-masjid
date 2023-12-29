@@ -6,16 +6,26 @@ class Web_model extends CI_Model
     public function getMasjid()
     {
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->join('detail_masjid', 'detail_masjid.id_user = user.id');
+        $this->db->from('detail_masjid');
+        $this->db->join('user', 'user.id = detail_masjid.id_user');
         return $this->db->get()->result_array();
     }
+
     public function getDetail($id)
     {
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->join('detail_masjid', 'detail_masjid.id_user = user.id');
+        $this->db->from('detail_masjid');
+        $this->db->join('user', 'user.id = detail_masjid.id_user');
         $this->db->where('detail_masjid.id_user', $id);
         return $this->db->get()->row_array();
+    }
+
+    public function getKegiatan($id)
+    {
+        $this->db->select('*');
+        $this->db->from('kegiatan');
+        $this->db->join('user', 'user.id = kegiatan.id_user');
+        $this->db->where('kegiatan.id_user', $id);
+        return $this->db->get()->result_array();
     }
 }
