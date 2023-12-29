@@ -29,9 +29,9 @@ class User extends CI_Controller
         $data['kas_keluar'] = $this->db->query("SELECT sum(nominal) as nominal FROM kas where tipe_kas = 'keluar' AND id_user = ?", array($id_user))->row_array();
 
         $this->load->view('template_auth/header', $data);
-        $this->load->view('template_auth/sidebar', $data);
-        $this->load->view('template_auth/topbar', $data);
-        $this->load->view('user/index', $data);
+        $this->load->view('template_auth/sidebar');
+        $this->load->view('template_auth/topbar');
+        $this->load->view('user/index');
         $this->load->view('template_auth/footer');
     }
 
@@ -44,9 +44,9 @@ class User extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'My Profile';
             $this->load->view('template_auth/header', $data);
-            $this->load->view('template_auth/sidebar', $data);
-            $this->load->view('template_auth/topbar', $data);
-            $this->load->view('user/profile', $data);
+            $this->load->view('template_auth/sidebar');
+            $this->load->view('template_auth/topbar');
+            $this->load->view('user/profile');
             $this->load->view('template_auth/footer');
         } else {
             $id = $this->input->post('id');
@@ -99,9 +99,9 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template_auth/header', $data);
-            $this->load->view('template_auth/sidebar', $data);
-            $this->load->view('template_auth/topbar', $data);
-            $this->load->view('user/changepassword', $data);
+            $this->load->view('template_auth/sidebar');
+            $this->load->view('template_auth/topbar');
+            $this->load->view('user/changepassword');
             $this->load->view('template_auth/footer');
         } else {
             $current_password = $this->input->post('current_password');
@@ -125,6 +125,38 @@ class User extends CI_Controller
                     redirect('user/changepassword');
                 }
             }
+        }
+    }
+
+    public function management()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['site'] = $this->db->get('detail_masjid')->row_array();
+        $data['title'] = 'Site Management';
+
+        $this->form_validation->set_rules('name_resmi', 'Nama Masjid Resmi', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template_auth/header', $data);
+            $this->load->view('template_auth/sidebar');
+            $this->load->view('template_auth/topbar');
+            $this->load->view('user/site_management');
+            $this->load->view('template_auth/footer');
+        } else {
+            $id = $this->input->post('id_detail');
+            $save = [
+                'name_resmi' => $this->input->post('name_resmi'),
+                'date_resmi' => $this->input->post('date_resmi'),
+                'lokasi' => $this->input->post('lokasi'),
+                'luas_bangunan' => $this->input->post('luas_bangunan'),
+                'luas_keseluruhan' => $this->input->post('luas_keseluruhan'),
+                'daya_tampung' => $this->input->post('daya_tampung'),
+            ];
+
+            $this->db->where('id_detail', $id);
+            $this->db->update('detail_masjid', $save);
+            $this->session->set_flashdata('message', '<div class="alert alert-success text-white text-center" role="alert">Success update info detail masjid!</div>');
+            redirect('user/management');
         }
     }
 }

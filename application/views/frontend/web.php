@@ -68,9 +68,6 @@
                     <li><a class="nav-link scrollto" href="#data-masjid">Data Masjid</a></li>
                     <li><a class="nav-link scrollto" href="#kegiatan">Kegiatan</a></li>
                     <li><a class="nav-link scrollto" href="#jadwal">Jadwal Sholat</a></li>
-                    <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
                     <li><a class="getstarted scrollto" href="<?= site_url('login') ?>">Login/Daftar</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -196,27 +193,38 @@
             </div>
         </section><!-- End About Us Section -->
 
-        <!-- ======= Why Us Section ======= -->
-        <section id="data-masjid" class="why-us">
+        <!-- ======= Masjid yang Terdaftar ======= -->
+        <section id="data-masjid" class="team section-bg text-center">
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Daftar Masjid/Musala</h2>
-                    <p>Kami bangga melihat berbagai Masjid dan Musala yang telah sukses mengadopsi Aplikasi Keuangan kami dalam pengelolaan keuangan mereka. Bersama-sama, kami membentuk jejak keberhasilan, membuktikan bahwa solusi ini tidak hanya menguntungkan tetapi juga diakui oleh beragam komunitas keagamaan. Bergabunglah dengan mereka untuk menyederhanakan dan meningkatkan pengelolaan keuangan Masjid/Musala Anda.</p>
+                    <h2>Masjid/Musala</h2>
+                    <p>Kami bangga melihat berbagai Masjid dan Musala yang telah sukses mengadopsi Aplikasi Keuangan kami dalam pengelolaan keuangan mereka. Bersama-sama, kami membentuk jejak keberhasilan, membuktikan bahwa solusi ini tidak hanya menguntungkan tetapi juga diakui oleh beragam komunitas keagamaan.</p>
                 </div>
-                <div class="row">
 
+                <div class="row">
                     <?php foreach ($data as $data) : ?>
-                        <div class="col-lg-4 col-md-6 content-item">
-                            <img src="" alt="Logo Masjid <?= $data['name_masjid'] ?>">
-                            <h4>Masjid <?= $data['name_masjid'] ?></h4>
-                            <p><?= $data['alamat'] ?></p>
+                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                            <div class="member">
+                                <a href="<?= site_url('masjid/') . $data['id'] . '/' . str_replace(' ', '', $data['name_masjid']) ?>"><img src="<?= base_url('assets/img/profile/') . $data['image'] ?>"></a>
+                                <h4><a href="<?= site_url('masjid/') . $data['id'] . '/' . str_replace(' ', '', $data['name_masjid']) ?>">Masjid <?= $data['name_masjid'] ?></a></h4>
+                                <span><?= date('d/m/Y', strtotime($data['date_resmi'])) ?></span>
+                                <p>
+                                    <?= $data['lokasi'] ?>
+                                </p>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     <?php endforeach ?>
-
                 </div>
 
             </div>
+            <button type="button" class="btn btn-success">Muat lainnya</button>
         </section><!-- End Why Us Section -->
 
         <!-- ======= Our Clients Section ======= -->
@@ -226,157 +234,6 @@
         <!-- ======= Cta Section ======= -->
 
         <!-- ======= Portfolio Section ======= -->
-        <section id="kegiatan" class="portfolio">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Kegiatan Islami</h2>
-                    <p>Ikuti serangkaian kegiatan Islami kami yang penuh makna, memperingati berbagai tanggal bersejarah dalam kalender Islam. Setiap acara dirancang untuk memperkuat ikatan komunitas dan mendalamkan pemahaman terhadap nilai-nilai Islam. Sambut kebersamaan, ilmu, dan keberkahan dalam setiap momen spesial tanggal Islam bersama kami.</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row portfolio-container">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 2</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 2</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 2</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 3</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 1</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 3</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Portfolio Section -->
 
         <!-- ======= Jadwal Sholat ======= -->
         <section id="jadwal" class="portfolio">

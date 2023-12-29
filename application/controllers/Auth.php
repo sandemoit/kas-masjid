@@ -124,6 +124,12 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('user', $data);
+            $id_user = $this->db->insert_id();
+            $save = [
+                'id_user' => $id_user
+            ];
+            $this->db->insert('detail_masjid', $save);
+
             $this->db->insert('user_token', $user_token);
 
             $this->_sendEmail($token, 'verify', $email);
@@ -133,46 +139,81 @@ class Auth extends CI_Controller
         }
     }
 
-    private function _sendEmail($email, $token, $type)
-    {
-        // PHPMailer object
-        $mail = new PHPMailer(true);
-        //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-        $mail->isSMTP();
-        $mail->Host     = EMAIL_HOST;
-        $mail->SMTPAuth = true;
-        $mail->Username = EMAIL_ALAMAT;
-        $mail->Password = EMAIL_PASSWORD;
-        $mail->Port     = EMAIL_PORT;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    // private function _sendEmail($email, $token, $type)
+    // {
+    //     // PHPMailer object
+    //     $mail = new PHPMailer(true);
+    //     //Server settings
+    //     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    //     $mail->isSMTP();
+    //     $mail->Host     = EMAIL_HOST;
+    //     $mail->SMTPAuth = true;
+    //     $mail->Username = EMAIL_ALAMAT;
+    //     $mail->Password = EMAIL_PASSWORD;
+    //     $mail->Port     = EMAIL_PORT;
+    //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
-        //Recipients
-        $mail->setFrom(EMAIL_ALAMAT, EMAIL_NAMA);
-        $mail->addAddress($email);     //Add a recipient
-        $mail->addReplyTo(EMAIL_ALAMAT, 'Information');
+    //     //Recipients
+    //     $mail->setFrom(EMAIL_ALAMAT, EMAIL_NAMA);
+    //     $mail->addAddress($email);     //Add a recipient
+    //     $mail->addReplyTo(EMAIL_ALAMAT, 'Information');
+    //     $this->email->to($this->input->post('email'));
+
+    //     if ($type == 'verify') {
+    //         $mail->isHTML(true);  //Set email format to HTML
+    //         $mail->Subject = 'Account Verification';
+
+    //         // $mail->Body = $this->load->view('templates/auth_email/verify', ['token' => $token], TRUE);
+    //         $mail->Body = 'Click this link to verify you account  : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Verifikasi Akun</a>';
+    //     } else if ($type == 'forgot') {
+    //         $mail->isHTML(true);
+    //         $mail->Subject = 'Reset Password';
+
+    //         // $body = $this->load->view('templates/reset_password', ['token' => urldecode($token)] , TRUE);
+    //         $mail->Body = 'Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>';
+    //     }
+    //     // Send email
+    //     if (!$mail->send()) {
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">'
+    //             . $mail->ErrorInfo . '</div>');
+    //         redirect($_SERVER['HTTP_REFERER']);
+    //     } else {
+    //         return true;
+    //     }
+    // }
+
+    private function _sendEmail($token, $type)
+    {
+        $config = [
+            'protocol'  => 'smtp',
+            'smtp_host' => EMAIL_HOST,
+            'smtp_user' => EMAIL_ALAMAT,
+            'smtp_pass' => EMAIL_PASSWORD,
+            'smtp_port' => 587,
+            'smtp_crypto' => 'ssl',
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        ];
+
+        $this->load->library('email', $config);
+
+        $this->email->from(EMAIL_HOST, EMAIL_NAMA);
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
-            $mail->isHTML(true);  //Set email format to HTML
-            $mail->Subject = 'Account Verification';
-
-            // $mail->Body = $this->load->view('templates/auth_email/verify', ['token' => $token], TRUE);
-            $mail->Body = 'Click this link to verify you account  : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Verifikasi Akun</a>';
+            $this->email->subject('Account Verification');
+            $this->email->message('Click this link to verify you account  : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         } else if ($type == 'forgot') {
-            $mail->isHTML(true);
-            $mail->Subject = 'Reset Password';
-
-            // $body = $this->load->view('templates/reset_password', ['token' => urldecode($token)] , TRUE);
-            $mail->Body = 'Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>';
+            $this->email->subject('Reset Password');
+            $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
-        // Send email
-        if (!$mail->send()) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">'
-                . $mail->ErrorInfo . '</div>');
-            redirect($_SERVER['HTTP_REFERER']);
-        } else {
+
+        if ($this->email->send()) {
             return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
         }
     }
 

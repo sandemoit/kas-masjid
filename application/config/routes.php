@@ -51,5 +51,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = 'web';
 $route['login'] = 'auth/index';
+
+// masjid detail
+$route['masjid/(:num)/(:any)'] = 'web/detailMasjid/$1/$2';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
