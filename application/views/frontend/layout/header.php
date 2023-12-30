@@ -56,8 +56,6 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="<?= site_url('#hero') ?>">Home</a></li>
-                    <li><a class="nav-link scrollto" href="<?= site_url('#about') ?>">Tentang Kami</a></li>
                     <li><a class="nav-link scrollto" href="<?= site_url('#data-masjid') ?>">Data Masjid</a></li>
                     <li><a class="nav-link scrollto" href="<?= site_url('#jadwal') ?>">Jadwal Sholat</a></li>
                     <li><a class="getstarted scrollto" href="<?= site_url('login') ?>">Login/Daftar</a></li>

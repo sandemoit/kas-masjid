@@ -63,8 +63,6 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
                     <li><a class="nav-link scrollto" href="#data-masjid">Data Masjid</a></li>
                     <li><a class="nav-link scrollto" href="#jadwal">Jadwal Sholat</a></li>
                     <li><a class="getstarted scrollto" href="<?= site_url('login') ?>">Login/Daftar</a></li>
@@ -75,122 +73,7 @@
         </div>
     </header><!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero">
-        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-            <div class="carousel-inner" role="listbox">
-
-                <!-- Slide 1 -->
-                <div class="carousel-item active" style="background-image: url(<?= base_url('assets/frontend/') ?>img/slide/slide-1.webp)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Assalamualaikum</h2>
-                            <p class="animate__animated animate__fadeInUp"><?= get_setting('about') ?></p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-item" style="background-image: url(<?= base_url('assets/frontend/') ?>img/slide/slide-2.webp)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Multiplatform</h2>
-                            <p class="animate__animated animate__fadeInUp">Mudahnya mengelola keuangan masjid dengan multiplatform memberikan kemudahan bagi pengurus untuk memantau dan mengelola dana masjid dengan praktis dari berbagai perangkat, memastikan transparansi dan efisiensi dalam pengelolaan keuangan yang berkualitas.</p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item" style="background-image: url(<?= base_url('assets/frontend/') ?>img/slide/slide-3.webp)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Mudah Digunakan</h2>
-                            <p class="animate__animated animate__fadeInUp">Aplikasi keuangan masjid yang user-friendly memberikan pengalaman pengguna yang mudah dan intuitif. Dengan antarmuka yang ramah pengguna, pengurus masjid dapat dengan nyaman menjalankan fungsi keuangan, membuat pelaporan, dan mengelola keuangan masjid secara efisien tanpa hambatan.</p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-            </a>
-
-            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-            </a>
-
-        </div>
-    </section><!-- End Hero -->
-
     <main id="main">
-
-        <!-- ======= Featured Services Section ======= -->
-        <section id="featured-services" class="featured-services section-bg">
-            <div class="container">
-
-                <div class="row no-gutters">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-infinity"></i></div>
-                            <h4 class="title"><a href="">Pantau Keuangan Tanpa Batas</a></h4>
-                            <p class="description">Aplikasi ini memungkinkan pengurus masjid untuk dengan mudah memantau dan mengelola keuangan secara real-time dari mana saja dan kapan saja melalui website yang responsif.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-shield-check"></i></div>
-                            <h4 class="title"><a href="">Sederhana, Tapi Kuat</a></h4>
-                            <p class="description">Dengan antarmuka yang sederhana namun kuat, aplikasi keuangan masjid ini didesain agar mudah digunakan oleh semua anggota pengurus, bahkan yang tidak memiliki pengalaman teknis khusus.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-person-check"></i></div>
-                            <h4 class="title"><a href="">Laporan Cepat, Keputusan Tepat</a></h4>
-                            <p class="description">Akses laporan keuangan yang lengkap dan cepat membantu pengurus masjid membuat keputusan yang tepat dalam pengelolaan dana, menjadikan aplikasi ini sebagai alat yang tak tergantikan.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End Featured Services Section -->
-
-        <!-- ======= About Us Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>About Us</h2>
-                    <p><?php echo get_setting('about') ?></p>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 order-1 order-lg-2">
-                        <img src="<?= base_url('assets/frontend/') ?>img/app.webp" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>Tentang Aplikasi Keuangan Masjid/Musala: "Sewajarnya Unggul"</h3>
-                        <p>
-                            Selamat datang di Aplikasi Keuangan Masjid, solusi canggih yang diciptakan untuk memudahkan pengurus masjid dalam mengelola keuangan dengan segala kemudahan di ujung jari. Dengan penuh dedikasi, kami menghadirkan berbagai keunggulan yang membedakan aplikasi ini dari yang lain.
-                        </p>
-                        <p class="fst-italic">
-                            Aplikasi ini diciptakan dengan fokus pada kesederhanaan. Meskipun begitu, kekuatannya tidak boleh dianggap remeh. Antarmuka yang intuitif memastikan penggunaan yang mudah, memungkinkan siapa pun, tanpa terkecuali, untuk mengelola keuangan masjid tanpa kerumitan.
-                        </p>
-                        <p class="fst-italic">
-                            Menyadari kebutuhan akan fleksibilitas, aplikasi ini dapat diakses dari berbagai perangkat. Dengan begitu, pengurus masjid dapat mengelola keuangan dengan mudah di mana saja dan kapan saja, tanpa kekhawatiran akan kendala teknis.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End About Us Section -->
 
         <!-- ======= Masjid yang Terdaftar ======= -->
         <section id="data-masjid" class="team section-bg text-center">

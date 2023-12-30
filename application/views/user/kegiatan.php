@@ -81,7 +81,7 @@
                             <input type="text" class="form-control" id="name_kegiatan" name="name_kegiatan" placeholder="Nama kegiatan">
                         </div>
                         <div class="form-group">
-                            <input type="date" class="form-control" id="date_kegiatan" name="date_kegiatan" placeholder="Tanggal kegiatan">
+                            <input type="date" class="form-control" id="date_kegiatan" name="date_kegiatan" value="<?= date("d/m/Y") ?>">
                         </div>
                         <div class="form-group">
                             <input type="file" class="form-control" id="image_kegiatan" name="image_kegiatan">
