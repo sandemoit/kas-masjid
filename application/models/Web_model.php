@@ -3,8 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Web_model extends CI_Model
 {
-    public function getMasjid()
+    public function getMasjid($limit = null, $start = null, $id = null)
     {
+        if ($id != null) {
+            $this->db->where('detail_masjid.id_user', $id);
+        }
+        $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('detail_masjid');
         $this->db->join('user', 'user.id = detail_masjid.id_user');

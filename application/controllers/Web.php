@@ -11,7 +11,7 @@ class Web extends CI_Controller
 
     public function index()
     {
-        $data['masjid'] = $this->Web_model->getMasjid();
+        $data['masjid'] = $this->Web_model->getMasjid(8, 0);
         $this->load->view('frontend/web', $data);
     }
 

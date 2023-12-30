@@ -201,7 +201,7 @@
                     <p>Kami bangga melihat berbagai Masjid dan Musala yang telah sukses mengadopsi Aplikasi Keuangan kami dalam pengelolaan keuangan mereka. Bersama-sama, kami membentuk jejak keberhasilan, membuktikan bahwa solusi ini tidak hanya menguntungkan tetapi juga diakui oleh beragam komunitas keagamaan.</p>
                 </div>
 
-                <div class="row">
+                <div class="row" id="masjidContainer">
                     <?php foreach ($masjid as $data) : ?>
                         <?php if ($data['name_resmi'] !== null && $data['date_resmi'] !== null && $data['lokasi'] !== null) : ?>
                             <?php $url = url_title($data['name_resmi'], '-', TRUE); ?>
@@ -225,7 +225,7 @@
                 </div>
 
             </div>
-            <button type="button" class="btn btn-success">Muat lainnya</button>
+            <button type="button" class="btn btn-success" id="loadMore">Muat lainnya</button>
         </section><!-- End Why Us Section -->
 
         <!-- ======= Our Clients Section ======= -->

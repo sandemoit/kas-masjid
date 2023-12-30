@@ -97,12 +97,12 @@
         </div>
 
         <!-- Modal edit -->
-        <?php foreach ($kegiatan as $d) : ?>
-            <div class="modal fade" id="editmodal<?= $d['id_kegiatan'] ?>" tabindex="-1" role="dialog" aria-labelledby="editmodal<?= $d['id_kegiatan'] ?>" aria-hidden="true">
+        <?php foreach ($kegiatan as $key) : ?>
+            <div class="modal fade" id="editmodal<?= $key['id_kegiatan'] ?>" tabindex="-1" role="dialog" aria-labelledby="editmodal<?= $key['id_kegiatan'] ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editmodal<?= $d['id_kegiatan'] ?>">Edit Role Name</h5>
+                            <h5 class="modal-title" id="editmodal<?= $key['id_kegiatan'] ?>">Edit Role Name</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -110,14 +110,14 @@
                         <form action="<?php echo base_url('transaksi/updatekegiatan') ?>" method="POST">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <input type="hidden" name="id_kegiatan" id="id" value="<?= $d['id_kegiatan'] ?>">
-                                    <input type="text" class="form-control" id="name_kegiatan" name="name_kegiatan" value="<?= $d['name_kegiatan'] ?>" placeholder="Nama kegiatan">
+                                    <input type="hidden" name="id_kegiatan" id="id" value="<?= $key['id_kegiatan'] ?>">
+                                    <input type="text" class="form-control" id="name_kegiatan" name="name_kegiatan" value="<?= $key['name_kegiatan'] ?>" placeholder="Nama kegiatan">
                                 </div>
                                 <div class="form-group">
-                                    <input type="date" class="form-control" id="date_kegiatan" name="date_kegiatan" value="<?= $d['date_kegiatan'] ?>">
+                                    <input type="date" class="form-control" id="date_kegiatan" name="date_kegiatan" value="<?= $key['date_kegiatan'] ?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="file" class="form-control" id="image_kegiatan" name="image_kegiatan" value="<?= $d['image_kegiatan'] ?>">
+                                    <input type="file" class="form-control" id="image_kegiatan" name="image_kegiatan" value="<?= $key['image_kegiatan'] ?>">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -142,7 +142,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p class="text-danger">Menghapus Data Donatur : <b><?= $d['name_kegiatan']; ?></b></p>
+                            <p class="text-danger">Menghapus Data Kegiatan : <b><?= $d['name_kegiatan']; ?></b></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
