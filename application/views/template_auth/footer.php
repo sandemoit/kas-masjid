@@ -31,6 +31,19 @@
     new DataTable('#dataTable');
 </script>
 <script>
+    // Mendapatkan elemen input tanggal
+    var inputTanggal = document.getElementById('date_kegiatan');
+
+    // Mendapatkan tanggal saat ini
+    var today = new Date();
+
+    // Mendapatkan tanggal dengan format YYYY-MM-DD
+    var formattedDate = today.toISOString().split('T')[0];
+
+    // Mengatur nilai awal elemen input tanggal
+    inputTanggal.value = formattedDate;
+</script>
+<script>
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 
     var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
