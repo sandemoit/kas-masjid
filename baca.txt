@@ -2,12 +2,11 @@ Extrack file zip kedalam lolcalhost atau hosting anda.
 Silahkan teman-teman rubah file yang ada di folder application->config->database.php
 dengan mengganti:
 
-hostname = kalo pakai xampp localhost saja,kalo pake wampp saya kurang tahu
-username = username phpmyadmin anda
-password = password phpmyadmin anda
+username = username anda
+password = password anda
 database = nama database anda
 
-sesusai dengan settingan phpmyadmin teman-teman
+sesusai dengan settingan database teman-teman
 
 Login ADMIN
 =================
