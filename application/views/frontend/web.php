@@ -88,14 +88,14 @@
                     <?php foreach ($masjid as $data) : ?>
                         <?php if ($data['name_resmi'] !== null && $data['date_resmi'] !== null && $data['lokasi'] !== null) : ?>
                             <?php $url = url_title($data['name_resmi'], '-', TRUE); ?>
-                            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                            <div class="col-lg-2 col-md-6 d-flex align-items-stretch">
                                 <div class="member">
                                     <a href="<?= site_url('masjid/') . $data['id'] . '/' . $url ?>"><img src="<?= base_url('assets/img/profile/') . ($data['image'] ? $data['image'] : 'default.jpg') ?>"></a>
                                     <h4><a href="<?= site_url('masjid/') . $data['id'] . '/' . $url ?>">Masjid <?= $data['name_resmi'] ?></a></h4>
                                     <span><?= $data['date_resmi'] ? date('d/m/Y', strtotime($data['date_resmi'])) : '-' ?></span>
-                                    <p>
+                                    <!-- <p>
                                         <?= $data['lokasi'] ? $data['lokasi'] : '-' ?>
-                                    </p>
+                                    </p> -->
                                     <div class="social">
                                         <a href="https://<?= $data['twitter'] ? $data['twitter'] : '#' ?>"><i class="bi bi-twitter"></i></a>
                                         <a href="https://<?= $data['facebook'] ? $data['facebook'] : '#' ?>"><i class="bi bi-facebook"></i></a>
@@ -111,31 +111,6 @@
             <button type="button" class="btn btn-success" id="loadMore">Muat lainnya</button>
         </section><!-- End Why Us Section -->
 
-        <!-- ======= Our Clients Section ======= -->
-
-        <!-- ======= Services Section ======= -->
-
-        <!-- ======= Cta Section ======= -->
-
-        <!-- ======= Portfolio Section ======= -->
-
-        <!-- ======= Jadwal Sholat ======= -->
-        <section id="jadwal" class="portfolio">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Jadwal Sholat</h2>
-                </div>
-
-                <div class="row">
-                    <iframe id="iframe" title="prayerWidget" class="widget-m-top" style=" height: 358px; border: 1px solid #ddd;" scrolling="no" src="https://www.islamicfinder.org/prayer-widget/1642911/shafi/11/0/20.0/18.0"> </iframe>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ======= Contact Section ======= -->
-
 
     </main><!-- End #main -->
 
@@ -143,7 +118,7 @@
     <footer id="footer">
         <div class="container">
             <h3><?= get_setting('nama_website') ?></h3>
-            <p><?= get_setting('alamat') ?></p>
+            <!-- <p><?= get_setting('alamat') ?></p> -->
             <div class="social-links">
                 <a href="https://<?= get_setting('youtube') ?>" class="youtube"><i class="bx bxl-youtube"></i></a>
                 <a href="https://<?= get_setting('facebook') ?>" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -152,9 +127,9 @@
             <div class="copyright">
                 &copy; Copyright <strong><span><?= date('Y') . ' ' . get_setting('nama_website') ?></span></strong>. All Rights Reserved
             </div>
-            <div class="credits">
+            <!-- <div class="credits">
                 Developer by <a target="_blank" href="https://sandemoindoteknologi.co.id/">Sandemo Indo Teknologi</a>
-            </div>
+            </div> -->
         </div>
     </footer><!-- End Footer -->
 
